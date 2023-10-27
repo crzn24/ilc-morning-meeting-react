@@ -1,5 +1,9 @@
+import Calendar from "./components/Calendar";
+
 const App = () => {
-  return <div className="text-3xl">ILC Calendar</div>;
+  return <div className="mt-16 flex flex-col items-center">
+    <Calendar/>
+  </div>;
 }
 
 export default App;
