@@ -1,24 +1,17 @@
+import { useState } from "react";
 import Calendar from "./components/Calendar";
 
 const App = () => {
-  return <div className="mt-16 flex flex-col items-center">
-    <Calendar/>
-  </div>;
-}
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  return (
+    <div className="mt-16 flex flex-col items-center">
+      <Calendar value={currentDate} onChange={setCurrentDate} />
+    </div>
+  );
+};
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
