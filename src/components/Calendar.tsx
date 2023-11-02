@@ -54,23 +54,29 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
           </Cell>
         ))}
 
-        {/* COMES BEFORE ALL THE DATES  */}
+        {/* CELLS BEFORE DATES  */}
         {Array.from({ length: prefixDays }).map((_, index) => (
           <Cell key={index} />
         ))}
 
-        {/* DATES  */}
+        {/* CALENDAR DATES  */}
         {Array.from({ length: numDays }).map((_, index) => {
           const date = index + 1;
+          // boolean to check current date
+          const isCurrentDate = date === value.getDate();
 
           return (
-            <Cell onClick={() => handleClickDate(date)} key={date}>
+            <Cell
+              isActive={isCurrentDate}
+              onClick={() => handleClickDate(date)}
+              key={date}
+            >
               {index + 1}
             </Cell>
           );
         })}
 
-        {/* COMES AFTER DATES  */}
+        {/* CELLS AFTER DATES  */}
         {Array.from({ length: suffixDays }).map((_, index) => (
           <Cell key={index} />
         ))}
