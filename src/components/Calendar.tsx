@@ -13,7 +13,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   const numDays = differenceInDays(endDate, startDate) + 1;
 
   const prefixDays = startDate.getDay();
-  const suffixDays = 6 - endDate.getDate();
+  const suffixDays = 6 - endDate.getDay();
 
   const prevMonth = () => onChange && onChange(sub(value, { months: 1 }));
 
@@ -28,7 +28,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
     <div className="w-[400px] border-t border-l">
       <div className="grid grid-cols-7 items-center justify-center text-center">
         <Cell>{"<<"}</Cell>
-        <Cell>{"<"}</Cell>
+        <Cell onClick={prevMonth}>{"<"}</Cell>
         <Cell className="col-span-3">2023</Cell>
         <Cell>{">"}</Cell>
         <Cell>{">>"}</Cell>
