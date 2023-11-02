@@ -17,6 +17,8 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
 
   const prevMonth = () => onChange && onChange(sub(value, { months: 1 }));
   const nextMonth = () => onChange && onChange(add(value, { months: 1 }));
+  const prevYear = () => onChange && onChange(sub(value, { years: 1 }));
+  const nextYear = () => onChange && onChange(add(value, { years: 1 }));
 
   // console.log(prefixDays);
   // console.log(startDate);
@@ -27,11 +29,11 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
     // <div>Calendar</div>
     <div className="w-[400px] border-t border-l">
       <div className="grid grid-cols-7 items-center justify-center text-center">
-        <Cell>{"<<"}</Cell>
+        <Cell onClick={prevYear}>{"<<"}</Cell>
         <Cell onClick={prevMonth}>{"<"}</Cell>
         <Cell className="col-span-3">{format(value, 'LLLL yyyy')}</Cell>
         <Cell onClick={nextMonth}>{">"}</Cell>
-        <Cell>{">>"}</Cell>
+        <Cell onClick={nextYear}>{">>"}</Cell>
 
         {daysOfWeek.map((day) => (
           <Cell key={day} className="text-xs font-bold uppercase">
