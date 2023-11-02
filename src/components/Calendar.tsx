@@ -1,4 +1,4 @@
-import { differenceInDays, endOfMonth, format, startOfMonth, sub } from "date-fns";
+import { add, differenceInDays, endOfMonth, format, startOfMonth, sub } from "date-fns";
 import Cell from "./Cell";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -16,6 +16,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   const suffixDays = 6 - endDate.getDay();
 
   const prevMonth = () => onChange && onChange(sub(value, { months: 1 }));
+  const nextMonth = () => onChange && onChange(add(value, { months: 1 }));
 
   // console.log(prefixDays);
   // console.log(startDate);
@@ -29,7 +30,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         <Cell>{"<<"}</Cell>
         <Cell onClick={prevMonth}>{"<"}</Cell>
         <Cell className="col-span-3">{format(value, 'LLLL yyyy')}</Cell>
-        <Cell>{">"}</Cell>
+        <Cell onClick={nextMonth}>{">"}</Cell>
         <Cell>{">>"}</Cell>
 
         {daysOfWeek.map((day) => (
