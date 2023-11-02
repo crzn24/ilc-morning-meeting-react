@@ -1,4 +1,12 @@
-import { add, differenceInDays, endOfMonth, format, startOfMonth, sub } from "date-fns";
+import {
+  add,
+  differenceInDays,
+  endOfMonth,
+  format,
+  setDate,
+  startOfMonth,
+  sub,
+} from "date-fns";
 import Cell from "./Cell";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -20,6 +28,11 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   const prevYear = () => onChange && onChange(sub(value, { years: 1 }));
   const nextYear = () => onChange && onChange(add(value, { years: 1 }));
 
+  const handleClickDate = (index: number) => {
+    const date = setDate(value, index);
+    onChange && onChange(date);
+  };
+
   // console.log(prefixDays);
   // console.log(startDate);
   // console.log(endDate);
@@ -31,7 +44,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
       <div className="grid grid-cols-7 items-center justify-center text-center">
         <Cell onClick={prevYear}>{"<<"}</Cell>
         <Cell onClick={prevMonth}>{"<"}</Cell>
-        <Cell className="col-span-3">{format(value, 'LLLL yyyy')}</Cell>
+        <Cell className="col-span-3">{format(value, "LLLL yyyy")}</Cell>
         <Cell onClick={nextMonth}>{">"}</Cell>
         <Cell onClick={nextYear}>{">>"}</Cell>
 
@@ -50,7 +63,11 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         {Array.from({ length: numDays }).map((_, index) => {
           const date = index + 1;
 
-          return <Cell key={date}>{index + 1}</Cell>;
+          return (
+            <Cell onClick={() => handleClickDate(date)} key={date}>
+              {index + 1}
+            </Cell>
+          );
         })}
 
         {/* COMES AFTER DATES  */}
