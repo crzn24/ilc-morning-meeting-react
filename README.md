@@ -2,6 +2,7 @@
 
 This is app is currently in development...
 
+A calendar built from scratch using React and Typescript as the framework. I've utilized Vite for frontend tooling, date-fns library for calendar data, and TailwindCSS for styling.
 
 <!-- # React + TypeScript + Vite
 

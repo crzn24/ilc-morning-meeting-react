@@ -44,7 +44,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
       <div className="grid grid-cols-7 items-center justify-center text-center">
         <Cell onClick={prevYear}>{"<<"}</Cell>
         <Cell onClick={prevMonth}>{"<"}</Cell>
-        <Cell className="col-span-3">{format(value, "LLLL yyyy")}</Cell>
+        <Cell className="col-span-3 text-xl font-black">{format(value, "LLLL yyyy")}</Cell>
         <Cell onClick={nextMonth}>{">"}</Cell>
         <Cell onClick={nextYear}>{">>"}</Cell>
 
